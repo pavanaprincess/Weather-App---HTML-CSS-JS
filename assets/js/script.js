@@ -18,16 +18,6 @@ const input = document.querySelector('.input-search');
 input.addEventListener('keypress', showData)
 
 
-
-function showData(e) {
-    if (e.keyCode === 13) {
-        showResults(input.value);
-        //console.log(input.value);
-        //console.log('Hello')
-    }
-    //e.preventDefault();
-}
-
 async function showResults(value) {
     const data = await fetch(`${api_details.url}weather?q=${value}&units=metric&APPID=${api_details.api_key}`)
     const fdata = await data.json();
@@ -47,6 +37,17 @@ async function showResults(value) {
         displayData(fdata);
     }
 }
+
+function showData(e) {
+    if (e.keyCode === 13) {
+        showResults(input.value);
+        //console.log(input.value);
+        //console.log('Hello')
+    }
+    //e.preventDefault();
+}
+
+
 
 function displayData(data) {
     const location_city = document.querySelector('.location-city');
